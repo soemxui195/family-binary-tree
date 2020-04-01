@@ -1,68 +1,144 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Family Binary Tree
 
-## Available Scripts
+family-binary-tree is a JavaScript library for creating and manipulating hierarchical binary tree structures.
 
-In the project directory, you can run:
+![Imgur](https://i.imgur.com/iU5DWw5.png)
+# Installation
 
-### `yarn start`
+The easiest way to use Family Binary Tree is to install it from NPM and include it in your own React build process.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__NPM__
+```
+npm install family-binary-tree
+```
+__YARN__
+```
+yarn add family-binary-tree
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Example
 
-### `yarn test`
+Require the EmailEditor component and render it with JSX:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+import React, { Component } from "react";
 
-### `yarn build`
+import BinaryTree from "family-binary-tree";
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const data = [
+  {
+    id: 1,
+    left_child_id: 2,
+    right_child_id: 3,
+    username: "User 1",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 2,
+    left_child_id: 4,
+    right_child_id: 5,
+    username: "User 2",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 3,
+    left_child_id: 6,
+    right_child_id: null,
+    username: "User 3",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 4,
+    left_child_id: 7,
+    right_child_id: 8,
+    username: "User 4",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 5,
+    left_child_id: null,
+    right_child_id: null,
+    username: "User 5",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 6,
+    left_child_id: null,
+    right_child_id: null,
+    username: "User 6",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 7,
+    left_child_id: 9,
+    right_child_id: null,
+    username: "User 7",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 8,
+    left_child_id: null,
+    right_child_id: 10,
+    username: "User 8",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 9,
+    left_child_id: null,
+    right_child_id: null,
+    username: "User 9",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  },
+  {
+    id: 10,
+    left_child_id: null,
+    right_child_id: null,
+    username: "User 10",
+    image: "https://i.imgur.com/yzUDPMJ.png"
+  }
+];
+class App extends Component {
+    render(){
+        <div>
+            <BinaryTree
+                allUsers={data}
+                rootUser={data[0]}
+                bgSideBar={'#333'}
+                colorText={'#333'}
+                colorSideBar={'#fff'}
+                // bgButton={'blue'}
+                // colorButton={'black'}
+                // disableSideBar
+                // disableNavigation
+                // renderNode={user=>{
+                //   return (<div>Node</div>);
+                // }}
+                // renderDetail={user => {
+                //   return <div>User</div>;
+                // }}
+            />
+        </div>
+    }
+}
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+render(<App />, document.getElementById('app'))
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# API
 
-### `yarn eject`
+| Property | Description | Type | Default |
+| ------ | ----------- | ------| -------|
+|  allUsers  | TreeNodes data Array, 3 required fields `id`, `left_child_id`, `right_child_id`. With `id` as root, `left_child_id` and `right_child_id` are 2 child branches  | array\<{ id, left_child_id, right_child_id }> | - |
+| rootUser | Choose the root of a binary tree | array[0] | - |
+| maxDeep | Stratification level of the tree. Maximum of 4 | number | - |
+| disableSideBar | Disables the sidebar of the binary tree | boolean | false |
+| disableNavigation | Disables the navigation button of the binary tree | boolean | false |
+| renderNode | Customize node of the binary tree | Function | - |
+| renderDetail | Customize detail node of the binary tree | Function | - |
+| colorText | Color of the text Node | string | - |
+| bgSideBar | Background color of the sidebar | string | - |
+| colorSideBar | Color of the sidebar | string | - |
+| bgButton | Background color of the navigation button | string | - |
+| colorButton | Color of the navigation button | string | - |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

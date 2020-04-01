@@ -1,0 +1,380 @@
+.tree {
+  white-space: nowrap;
+  flex: 1 0 auto;
+  // overflow: auto;
+  & .navigation-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 430px;
+    position: absolute;
+    top: 200px;
+    // @include mobile {
+    //   left: 170%;
+    // }
+    & .button-tree {
+      background-color: #808285;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 8px;
+      height: 23px;
+      line-height: 13px;
+      min-width: 90px;
+      margin-bottom: 3px;
+      padding: 6px 5px;
+      position: relative;
+      text-transform: uppercase;
+      white-space: nowrap;
+      &[disabled] {
+        opacity: 0.65;
+        cursor: not-allowed;
+        &:hover {
+          background-color: #808285;
+          opacity: 0.65;
+          color: #ffffff;
+        }
+      }
+      & i {
+        transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        display: inline-block;
+        pointer-events: none;
+        color: inherit;
+        font-style: normal;
+        text-align: center;
+        text-transform: none;
+        vertical-align: -0.125em;
+        padding: 0 5px;
+      }
+    }
+    & .buttons-bottom {
+      display: flex;
+      flex-wrap: nowrap;
+      & .button-left {
+        margin-right: 2px;
+        & i {
+          transform: rotate(45deg);
+        }
+      }
+      & .button-right {
+        margin-left: 2px;
+        & i {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree li {
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 30px 5px 0 5px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  /*added for long names*/
+
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  margin: 0 -2px 0 -2px;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree li::before,
+.tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 30px;
+}
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+  any siblings*/
+.tree li:only-child::after,
+.tree li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child {
+  padding-top: 0;
+}
+
+/*Remove left connector from first child and 
+  right connector from last child*/
+.tree li:first-child::before,
+.tree li:last-child::after {
+  border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 100% 0 0;
+}
+.tree li:first-child::after {
+  border-radius: 100% 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+.tree li a {
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #666;
+  font-family: arial, verdana, tahoma;
+  font-size: 11px;
+  display: inline-block;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree li a:hover,
+.tree li a:hover + ul li a {
+  background: #c8e4f8;
+  color: #000;
+  border: 1px solid #94a0b4;
+  & .name {
+    color: #000;
+  }
+}
+.tree li a {
+  position: relative;
+}
+/*Connector styles on hover*/
+.tree li a:hover + ul li::after,
+.tree li a:hover + ul li::before,
+.tree li a:hover + ul::before,
+.tree li a:hover + ul ul::before {
+  border-color: #94a0b4;
+}
+.tree li a:hover .distributor-details {
+  visibility: visible !important;
+}
+.distributor-wrap {
+  -webkit-box-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  font-size: 11px;
+  margin: 0 6px;
+  & .avatar {
+    z-index: 1;
+  }
+}
+.distributor-details {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  font-weight: 700;
+  left: 130%;
+  min-width: 350px;
+  padding: 5px 8px;
+  position: absolute;
+  top: -14px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  visibility: hidden;
+  z-index: 3;
+  & .details-wrap {
+    overflow-x: auto;
+  }
+  & .details-title {
+    border-bottom: 1px solid #b2e3f1;
+    font-size: 12px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  & .details-row {
+    display: -webkit-box;
+    display: flex;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  & .horizontal-line {
+    background-color: #808285;
+    height: 1px;
+    left: -16px;
+    position: absolute;
+    top: 48px;
+    width: 16px;
+  }
+  & .sloping-line {
+    background-color: #808285;
+    height: 1px;
+    left: -34px;
+    position: absolute;
+    top: 42px;
+    -webkit-transform: rotate(37deg);
+    transform: rotate(37deg);
+    width: 20px;
+  }
+  & .label {
+    -webkit-box-flex: 0;
+    flex: 0 0 150px;
+    text-align: left;
+  }
+  & .value {
+    text-align: right;
+  }
+}
+
+#binary-tree {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  // min-width: 1366px;
+  width: 100%;
+  // overflow: hidden;
+  // padding-bottom: 20px;
+  // width: 100000px;
+  // margin: 5px auto;
+  & .leftSidebar {
+    margin-right: 5px;
+    margin-top: 0px;
+    width: 23px;
+    & .levels-wrap .level {
+      background-color: #00b6eb;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 1px;
+      &-0 {
+        border-radius: 5px 5px 0 0;
+        height: 150px;
+        padding-top: 70px;
+        width: 23px;
+      }
+      &-1 {
+        height: 150px;
+        padding-top: 75px;
+        width: 23px;
+      }
+      &-2 {
+        height: 150px;
+        padding-top: 73px;
+        width: 23px;
+      }
+      &-3 {
+        border-radius: 0 0 5px 5px;
+        height: 150px;
+        padding-top: 66px;
+        width: 23px;
+      }
+      & .level-label {
+        display: block;
+        font-size: 11px;
+        transform: rotate(-90deg);
+        white-space: nowrap;
+      }
+    }
+  }
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 18px;
+  z-index: 1;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.name {
+  color: #333;
+  text-transform: capitalize;
+}
+// modal
+.modal {
+  font-size: 12px;
+  display: block !important;
+  position: relative !important;
+  overflow: inherit;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+.popup-content {
+  width: auto;
+}
+img {
+  width: 100%;
+}
