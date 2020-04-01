@@ -1,6 +1,6 @@
 {
   "name": "family-binary-tree",
-  "version": "0.6.3",
+  "version": "0.6.6",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -40,16 +40,15 @@
     "react-test-renderer": "^16.3.2",
     "webpack-cli": "^3.3.11"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/tungvu17061997/family-binary-tree.git"
+  },
+  "keywords": ["tree", "family-tree", "treant", "binary-tree", "react", "reactjs", "tree-reactjs", "reactjs-tree"],
+  "author": "Tùng Vũ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/tungvu17061997/family-binary-tree/-/issues"
+  },
+  "homepage": "https://gitlab.com/tungvu17061997/family-binary-tree"
 }

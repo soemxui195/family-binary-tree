@@ -16,7 +16,7 @@ __YARN__
 yarn add family-binary-tree
 ```
 
-# Example
+# Usage
 
 Require the EmailEditor component and render it with JSX:
 
