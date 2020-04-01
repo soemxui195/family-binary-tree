@@ -1,24 +1,34 @@
 import React from "react";
 
-const fakeUser = {
-  id: "null",
-  username: "Null",
-  left_child_id: null,
-  right_child_id: null,
-  image: "https://i.imgur.com/AFj9jns.png"
-};
+// const fakeUser = {
+//   id: "null",
+//   username: "Null",
+//   left_child_id: null,
+//   right_child_id: null,
+//   image: "https://i.imgur.com/AFj9jns.png"
+// };
 export default class BinaryTreeNode extends React.Component {
   render() {
     const {
       user,
       allUsers,
+      // fakeUser = [],
       deep,
       maxDeep = 4,
       renderDetail,
       renderNode,
       onClick,
-      colorText = '#333'
+      colorText = "#333",
+      imageFake = "https://i.imgur.com/AFj9jns.png",
+      nameFake = "Null"
     } = this.props;
+    const fakeUser = {
+      id: "null",
+      username: nameFake,
+      left_child_id: null,
+      right_child_id: null,
+      image: imageFake
+    };
     let leftChild = allUsers.find(item => item.id === user.left_child_id);
     if (!leftChild) {
       leftChild = fakeUser;
@@ -29,10 +39,13 @@ export default class BinaryTreeNode extends React.Component {
     }
     return (
       <li>
-        {(colorText && (
-          <a onClick={()=>{
-            onClick && onClick(user.id);
-          }} href="javascript:void(0)">
+        {colorText && (
+          <a
+            onClick={() => {
+              onClick && onClick(user.id);
+            }}
+            href="javascript:void(0)"
+          >
             {renderNode ? (
               renderNode(user)
             ) : (
@@ -40,7 +53,9 @@ export default class BinaryTreeNode extends React.Component {
                 <div className="avatar">
                   <img src={user.image} />
                 </div>
-                <span className="name" style={{color: colorText}}>{user.username}</span>
+                <span className="name" style={{ color: colorText }}>
+                  {user.username}
+                </span>
               </div>
             )}
             <div className="distributor-details">
@@ -55,10 +70,11 @@ export default class BinaryTreeNode extends React.Component {
                   </div>
                 </div>
               )}
-              <div className="horizontal-line" /> <div className="sloping-line" />
+              <div className="horizontal-line" />{" "}
+              <div className="sloping-line" />
             </div>
           </a>
-        ))}
+        )}
 
         {deep < maxDeep && (
           <ul>
@@ -71,6 +87,8 @@ export default class BinaryTreeNode extends React.Component {
               renderNode={renderNode}
               onClick={onClick}
               colorText={colorText}
+              imageFake={imageFake}
+              nameFake={nameFake}
             />
             <BinaryTreeNode
               deep={deep + 1}
@@ -81,6 +99,8 @@ export default class BinaryTreeNode extends React.Component {
               user={rightChild}
               onClick={onClick}
               colorText={colorText}
+              imageFake={imageFake}
+              nameFake={nameFake}
             />
           </ul>
         )}

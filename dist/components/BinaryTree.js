@@ -57,6 +57,8 @@ var BinaryTree = function (_React$Component) {
       var _props = this.props,
           _props$allUsers = _props.allUsers,
           allUsers = _props$allUsers === undefined ? [] : _props$allUsers,
+          imageFake = _props.imageFake,
+          nameFake = _props.nameFake,
           maxDeep = _props.maxDeep,
           renderDetail = _props.renderDetail,
           renderNode = _props.renderNode,
@@ -207,7 +209,9 @@ var BinaryTree = function (_React$Component) {
               renderDetail: renderDetail,
               renderNode: renderNode,
               onClick: onClickUser,
-              colorText: colorText
+              colorText: colorText,
+              imageFake: imageFake,
+              nameFake: nameFake
             })
           ),
           (disableNavigation, bgButton, colorButton && _react2.default.createElement(

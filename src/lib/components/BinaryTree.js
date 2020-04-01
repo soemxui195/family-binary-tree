@@ -20,6 +20,8 @@ export default class BinaryTree extends React.Component {
   render() {
     const {
       allUsers = [],
+      imageFake,
+      nameFake,
       maxDeep,
       renderDetail,
       renderNode,
@@ -135,6 +137,8 @@ export default class BinaryTree extends React.Component {
               renderNode={renderNode}
               onClick={onClickUser}
               colorText={colorText}
+              imageFake={imageFake}
+              nameFake={nameFake}
             />
           </ul>
           {disableNavigation, bgButton, colorButton && (

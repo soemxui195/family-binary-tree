@@ -90,6 +90,8 @@ const App = () => (
       bgSideBar={'#333'}
       colorText={'#333'}
       colorSideBar={'#fff'}
+      // imageFake={'https://imgur.com/PE0P672.png'}
+      // nameFake={'undefined'}  
       // bgButton={'blue'}
       // colorButton={'black'}
       // disableSideBar

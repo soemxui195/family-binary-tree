@@ -110,6 +110,8 @@ class App extends Component {
                 bgSideBar={'#333'}
                 colorText={'#333'}
                 colorSideBar={'#fff'}
+                // imageFake={'https://imgur.com/PE0P672.png'}
+                // nameFake={'undefined'}  
                 // bgButton={'blue'}
                 // colorButton={'black'}
                 // disableSideBar
@@ -137,6 +139,8 @@ render(<App />, document.getElementById('app'))
 | maxDeep | Stratification level of the tree. Maximum of 4 | number | - |
 | disableSideBar | Disables the sidebar of the binary tree | boolean | false |
 | disableNavigation | Disables the navigation button of the binary tree | boolean | false |
+| imageFake | Customize image data null of the binary tree | string | - |
+| nameFake | Customize name text data null of the binary tree | string | - |
 | renderNode | Customize node of the binary tree | Function | - |
 | renderDetail | Customize detail node of the binary tree | Function | - |
 | colorText | Color of the text Node | string | - |

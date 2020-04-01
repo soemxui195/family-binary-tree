@@ -18,14 +18,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var fakeUser = {
-  id: "null",
-  username: "Null",
-  left_child_id: null,
-  right_child_id: null,
-  image: "https://i.imgur.com/AFj9jns.png"
-};
-
+// const fakeUser = {
+//   id: "null",
+//   username: "Null",
+//   left_child_id: null,
+//   right_child_id: null,
+//   image: "https://i.imgur.com/AFj9jns.png"
+// };
 var BinaryTreeNode = function (_React$Component) {
   _inherits(BinaryTreeNode, _React$Component);
 
@@ -48,8 +47,19 @@ var BinaryTreeNode = function (_React$Component) {
           renderNode = _props.renderNode,
           _onClick = _props.onClick,
           _props$colorText = _props.colorText,
-          colorText = _props$colorText === undefined ? '#333' : _props$colorText;
+          colorText = _props$colorText === undefined ? "#333" : _props$colorText,
+          _props$imageFake = _props.imageFake,
+          imageFake = _props$imageFake === undefined ? "https://i.imgur.com/AFj9jns.png" : _props$imageFake,
+          _props$nameFake = _props.nameFake,
+          nameFake = _props$nameFake === undefined ? "Null" : _props$nameFake;
 
+      var fakeUser = {
+        id: "null",
+        username: nameFake,
+        left_child_id: null,
+        right_child_id: null,
+        image: imageFake
+      };
       var leftChild = allUsers.find(function (item) {
         return item.id === user.left_child_id;
       });
@@ -67,9 +77,12 @@ var BinaryTreeNode = function (_React$Component) {
         null,
         colorText && _react2.default.createElement(
           "a",
-          { onClick: function onClick() {
+          {
+            onClick: function onClick() {
               _onClick && _onClick(user.id);
-            }, href: "javascript:void(0)" },
+            },
+            href: "javascript:void(0)"
+          },
           renderNode ? renderNode(user) : _react2.default.createElement(
             "div",
             { className: "distributor-wrap" },
@@ -126,7 +139,9 @@ var BinaryTreeNode = function (_React$Component) {
             renderDetail: renderDetail,
             renderNode: renderNode,
             onClick: _onClick,
-            colorText: colorText
+            colorText: colorText,
+            imageFake: imageFake,
+            nameFake: nameFake
           }),
           _react2.default.createElement(BinaryTreeNode, {
             deep: deep + 1,
@@ -136,7 +151,9 @@ var BinaryTreeNode = function (_React$Component) {
             renderNode: renderNode,
             user: rightChild,
             onClick: _onClick,
-            colorText: colorText
+            colorText: colorText,
+            imageFake: imageFake,
+            nameFake: nameFake
           })
         )
       );
