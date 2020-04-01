@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9db2751e4b907685e9eaa454c2fdad73",
+    "revision": "be6c21bcaa8448bd4e4ba6287d0f53d5",
     "url": "/family-binary-tree/index.html"
   },
   {
