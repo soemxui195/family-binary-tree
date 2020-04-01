@@ -22,7 +22,7 @@ yarn add family-binary-tree
 
 # Usage
 
-Require the EmailEditor component and render it with JSX:
+Require the BinaryTree component and render it with JSX:
 
 ```
 import React, { Component } from "react";
