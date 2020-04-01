@@ -83,7 +83,7 @@ const App = () => (
       padding: "0 auto"
     }}
   >
-    <h1>Hello Tung Codosa</h1>
+    <h1>Demo Tree - By Tùng Vũ</h1>
     <BinaryTree
       allUsers={data}
       rootUser={data[0]}

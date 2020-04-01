@@ -1,6 +1,6 @@
 {
   "name": "family-binary-tree",
-  "version": "0.6.6",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -25,7 +25,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "pub": "npm run build && npm publish"
+    "build-example": "react-scripts build",
+    "pub": "npm run build && npm publish",
+    "predeploy": "npm run build-example",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -34,6 +37,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.7.0",
+    "gh-pages": "^2.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
@@ -44,11 +48,40 @@
     "type": "git",
     "url": "https://github.com/soemxui195/family-binary-tree.git"
   },
-  "keywords": ["tree", "family-tree", "treant", "binary-tree", "react", "reactjs", "tree-reactjs", "reactjs-tree"],
+  "keywords": [
+    "tree",
+    "family-tree",
+    "treant",
+    "binary-tree",
+    "react",
+    "reactjs",
+    "tree-reactjs",
+    "reactjs-tree",
+    "react-tree",
+    "tree-react",
+    "tree-node",
+    "supper-tree",
+    "tree-family",
+    "component-tree",
+    "level-tree",
+    "tree-level"
+  ],
   "author": "Tùng Vũ",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/soemxui195/family-binary-tree/-/issues"
+    "url": "https://github.com/soemxui195/family-binary-tree/issues"
   },
-  "homepage": "https://github.com/soemxui195/family-binary-tree"
+  "homepage": "https://soemxui195.github.io/family-binary-tree",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
