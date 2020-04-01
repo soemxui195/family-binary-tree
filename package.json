@@ -42,13 +42,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/tungvu17061997/family-binary-tree.git"
+    "url": "https://github.com/soemxui195/family-binary-tree.git"
   },
   "keywords": ["tree", "family-tree", "treant", "binary-tree", "react", "reactjs", "tree-reactjs", "reactjs-tree"],
   "author": "Tùng Vũ",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/tungvu17061997/family-binary-tree/-/issues"
+    "url": "https://github.com/soemxui195/family-binary-tree/-/issues"
   },
-  "homepage": "https://gitlab.com/tungvu17061997/family-binary-tree"
+  "homepage": "https://github.com/soemxui195/family-binary-tree"
 }
